@@ -1,6 +1,7 @@
 {
   "name": "slim",
   "dependencies": {
-    "sir-trevor-js": "0.3.0"
+    "sir-trevor-js": "0.3.0",
+    "bootstrap": "~3.0.2"
   }
 }

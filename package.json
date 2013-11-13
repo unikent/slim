@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "bower": "~0.10.0",
+    "bower": "~1.2.0",
 
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1.5",
