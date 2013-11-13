@@ -23,7 +23,7 @@
 <script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/jquery/jquery-migrate.min.js"></script>
 <script type="text/javascript" src="bower_components/Eventable/eventable.js"></script>
-<script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
+<script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.js"></script>
 <script type="text/javascript" src="js/grande.js"></script>
 
 <script>
@@ -41,10 +41,19 @@
 
 	?>;
 	$("#trevor-text-id").val(trevordata);
-	new SirTrevor.Editor({ el: $('.js-st-instance') });
+	new SirTrevor.Editor({
+		el: $('.js-st-instance'),
+		blockTypes: [
+			'Text',
+			'Image',
+			'Video'
+		]
+
+	});
 	// $("#trevor-form").focusout(function() {
 	// 	$("#trevor-form").submit();
 	// });
+	$(".st-format-bar").hide();
 </script>
 
 <script type="text/javascript">
