@@ -56,12 +56,13 @@
 
 				var colset = get_colset(template);
 				colset = colset({ i: colsets.length });
-
-				$(colset).find('textarea').each(function(){
-					new SirTrevor.Editor({ el: $(this) });
-				})
+				colset = $.parseHTML(colset);
 
 				form.append(colset);	
+				$(colset).find('textarea').each(function(){
+					new SirTrevor.Editor({ el: $(this) });
+				});
+
 			}
 
 
