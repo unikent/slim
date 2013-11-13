@@ -16,13 +16,17 @@
 		<br />
 
 		<form action="POST" class="row">
-			<div class="col col-md-8">
-		 		<textarea name="col_one"></textarea>
-		 	</div>
+			<fieldset class="colset">
+				<input type="hidden" name="colset[0][type]" value="2c:8-4:v0.1" />
 
-		 	<div class="col col-md-4">
-				<textarea name="col_two"></textarea>
-			</div>
+				<div class="col col-md-8">
+			 		<textarea name="colset[0][col][0]"></textarea>
+			 	</div>
+
+			 	<div class="col col-md-4">
+					<textarea name="colset[0][col][1]"></textarea>
+				</div>
+			</fieldset>
 		</form>
 
 		<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
@@ -32,8 +36,9 @@
 		<script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
 
 		<script>
-		  var trev1 = new SirTrevor.Editor({ el: $("[name='col_one']") });
-		  var trev2 = new SirTrevor.Editor({ el: $("[name='col_two']") });
+			$('.colset textarea').each(function(){
+				new SirTrevor.Editor({ el: $(this) });
+			})
 		</script>
 
 		<style type="text/css">
