@@ -16,17 +16,7 @@
 		<br />
 
 		<form id="editor" action="POST">
-			<fieldset class="colset row">
-				<input type="hidden" name="colset[0][type]" value="2c:8-4:v0.1" />
 
-				<div class="col col-md-8">
-			 		<textarea name="colset[0][col][0]"></textarea>
-			 	</div>
-
-			 	<div class="col col-md-4">
-					<textarea name="colset[0][col][1]"></textarea>
-				</div>
-			</fieldset>
 		</form>
 
 		<button class="add-colset btn btn-primary">Add Colset</button>
@@ -38,21 +28,51 @@
 		<script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
 
 		<script>
-			$('#editor textarea').each(function(){
-				new SirTrevor.Editor({ el: $(this) });
-			})
+			var get_colset = function(template, vars){
+				switch(template){
+					case '2c:8-4:v0.1':
+						return _.template([
+							<fieldset class="colset row" data-i="<%= i %>">
+								<input type="hidden" name="colset[<%= i %>][type]" value="2c:8-4:v0.1" />
+
+								<div class="col col-md-8">
+							 		<textarea name="colset[<%= i %>][col][0]"></textarea>
+							 	</div>
+
+							 	<div class="col col-md-4">
+									<textarea name="colset[<%= i %>][col][1]"></textarea>
+								</div>
+							</fieldset>
+						].join("\n"));
+						break;
+
+					default:
+						break;
+				} 
+			};
+
+
+			var append_colset = function(template){
+				var form = $('#editor');
+				var colsets = $('#editor .colset');
+
+				var colset = get_colset(template);
+				colset = colset({ i: colsets.length });
+
+				$(colset).find('textarea').each(function(){
+					new SirTrevor.Editor({ el: $(this) });
+				})
+
+				form.append(colset);	
+			}
+
 
 			$('.add-colset').click(function(){
-				var form = $('form');
-				var colset = form.find('.colset')
-				var counter = colset.length;
+				append_colset('2c:8-4:v0.1')
+			});
 
-				colset = colset.first().clone();
-				colset.find('input, textarea').each(function(){
-					$(this).attr('name', $(this).attr('name').replace('colset[0]', 'colset['+ counter + ']'))
-				});
-
-				form.append(colset);
+			$(document).ready(function(){
+				append_colset('2c:8-4:v0.1')
 			});
 		</script>
 
