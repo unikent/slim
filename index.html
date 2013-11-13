@@ -19,7 +19,8 @@
 
 		</form>
 
-		<button class="add-colset btn btn-primary">Add Colset</button>
+		<button class="add-colset btn btn-primary" data-colset="2c:8-4:v0.1">Add Colset (2-Col)</button>
+		<button class="add-colset btn btn-primary" data-colset="3c:4-4-4:v0.1">Add Colset (3-Col)</button>
 
 		<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
 		<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
@@ -39,6 +40,23 @@
 							" 	</div>",
 							" 	<div class=\"col col-md-4\">",
 							"		<textarea name=\"colset[<%= i %>][col][1]\"></textarea>",
+							"	</div>",
+							"</fieldset>"
+						].join("\n"));
+						break;
+
+					case '3c:4-4-4:v0.1':
+						return _.template([
+							"<fieldset class=\"colset row\" data-i=\"<%= i %>\">",
+							"	<input type=\"hidden\" name=\"colset[<%= i %>][type]\" value=\"3c:4-4-4:v0.1\" />",
+							"	<div class=\"col col-md-4\">",
+							" 		<textarea name=\"colset[<%= i %>][col][0]\"></textarea>",
+							" 	</div>",
+							" 	<div class=\"col col-md-4\">",
+							"		<textarea name=\"colset[<%= i %>][col][1]\"></textarea>",
+							"	</div>",
+							" 	<div class=\"col col-md-4\">",
+							"		<textarea name=\"colset[<%= i %>][col][2]\"></textarea>",
 							"	</div>",
 							"</fieldset>"
 						].join("\n"));
@@ -67,7 +85,7 @@
 
 
 			$('.add-colset').click(function(){
-				append_colset('2c:8-4:v0.1')
+				append_colset($(this).attr('data-colset'));
 			});
 
 			$(document).ready(function(){
