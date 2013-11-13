@@ -19,6 +19,7 @@
 
 		</form>
 
+		<button class="add-colset btn btn-primary" data-colset="1c:12:v0.1">Add Colset (1-Col)</button>
 		<button class="add-colset btn btn-primary" data-colset="2c:8-4:v0.1">Add Colset (2-Col)</button>
 		<button class="add-colset btn btn-primary" data-colset="3c:4-4-4:v0.1">Add Colset (3-Col)</button>
 
@@ -31,6 +32,17 @@
 		<script>
 			var get_colset = function(template, vars){
 				switch(template){
+					case '1c:12:v0.1':
+						return _.template([
+							"<fieldset class=\"colset row\" data-i=\"<%= i %>\">",
+							"	<input type=\"hidden\" name=\"colset[<%= i %>][type]\" value=\"1c:12:v0.1\" />",
+							"	<div class=\"col col-md-12\">",
+							" 		<textarea name=\"colset[<%= i %>][col][0]\"></textarea>",
+							" 	</div>",
+							"</fieldset>"
+						].join("\n"));
+						break;
+
 					case '2c:8-4:v0.1':
 						return _.template([
 							"<fieldset class=\"colset row\" data-i=\"<%= i %>\">",
@@ -80,7 +92,6 @@
 				$(colset).find('textarea').each(function(){
 					new SirTrevor.Editor({ el: $(this) });
 				});
-
 			}
 
 
@@ -88,9 +99,9 @@
 				append_colset($(this).attr('data-colset'));
 			});
 
-			$(document).ready(function(){
-				append_colset('2c:8-4:v0.1')
-			});
+			// $(document).ready(function(){
+			// 	append_colset('2c:8-4:v0.1')
+			// });
 		</script>
 
 		<style type="text/css">
