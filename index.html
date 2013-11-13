@@ -15,8 +15,8 @@
 
 		<br />
 
-		<form action="POST" class="row">
-			<fieldset class="colset">
+		<form id="editor" action="POST">
+			<fieldset class="colset row">
 				<input type="hidden" name="colset[0][type]" value="2c:8-4:v0.1" />
 
 				<div class="col col-md-8">
@@ -29,6 +29,8 @@
 			</fieldset>
 		</form>
 
+		<button class="add-colset btn btn-primary">Add Colset</button>
+
 		<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
 		<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/jquery/jquery-migrate.min.js"></script>
@@ -36,18 +38,38 @@
 		<script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
 
 		<script>
-			$('.colset textarea').each(function(){
+			$('#editor textarea').each(function(){
 				new SirTrevor.Editor({ el: $(this) });
 			})
+
+			$('.add-colset').click(function(){
+				var form = $('form');
+				var colset = form.find('.colset')
+				var counter = colset.length;
+
+				colset = colset.first().clone();
+				colset.find('input, textarea').each(function(){
+					$(this).attr('name', $(this).attr('name').replace('colset[0]', 'colset['+ counter + ']'))
+				});
+
+				form.append(colset);
+			});
 		</script>
 
 		<style type="text/css">
 			.col {
 				min-height: 20em; 
-				border: 2px dashed gray; 
+				border: 2px dashed #c4c4c4; 
+			}
+
+			.colset + .colset { 
+				margin-top: 1em;
+				border-top: none; 
 			}
 
 			.col + .col { border-left: none; }
+
+			.add-colset { margin-top: 2em; }
 		</style>
 	</body>
 </html>
