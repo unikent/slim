@@ -2,7 +2,12 @@
 <html>
 <head>
 	<title>slim editor</title>
+	<link href="bower_components/sir-trevor-js/sir-trevor.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="bower_components/sir-trevor-js/sir-trevor-icons.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
+
+
+
 <body>
 
 
@@ -11,6 +16,17 @@
   <textarea class="js-st-instance"></textarea>
 </form>
 
+
+
+<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="bower_components/Eventable/eventable.js"></script>
+<script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
+
+<script>
+  new SirTrevor.Editor({ el: $('.js-st-instance') });
+</script>
 
 </body>
 </html>
