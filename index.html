@@ -32,17 +32,15 @@
 				switch(template){
 					case '2c:8-4:v0.1':
 						return _.template([
-							<fieldset class="colset row" data-i="<%= i %>">
-								<input type="hidden" name="colset[<%= i %>][type]" value="2c:8-4:v0.1" />
-
-								<div class="col col-md-8">
-							 		<textarea name="colset[<%= i %>][col][0]"></textarea>
-							 	</div>
-
-							 	<div class="col col-md-4">
-									<textarea name="colset[<%= i %>][col][1]"></textarea>
-								</div>
-							</fieldset>
+							"<fieldset class=\"colset row\" data-i=\"<%= i %>\">",
+							"	<input type=\"hidden\" name=\"colset[<%= i %>][type]\" value=\"2c:8-4:v0.1\" />",
+							"	<div class=\"col col-md-8\">",
+							" 		<textarea name=\"colset[<%= i %>][col][0]\"></textarea>",
+							" 	</div>",
+							" 	<div class=\"col col-md-4\">",
+							"		<textarea name=\"colset[<%= i %>][col][1]\"></textarea>",
+							"	</div>",
+							"</fieldset>"
 						].join("\n"));
 						break;
 
