@@ -12,8 +12,9 @@
 
 
 
-<form>
-  <textarea class="js-st-instance"></textarea>
+<form id="trevor-form" action="index.html" method="post">
+  <textarea id="trevor-text-id" name="trevor-text" class="js-st-instance"></textarea>
+  <input type="submit" />
 </form>
 
 
@@ -25,7 +26,24 @@
 <script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
 
 <script>
-  new SirTrevor.Editor({ el: $('.js-st-instance') });
+	var trevordata = <?php
+
+	if (isset($_POST['trevor-text']))
+	{
+		echo $trevordata = !empty($_POST['trevor-text']) ? json_encode($_POST['trevor-text']) : "[]";
+		file_put_contents("data/index.json", $trevordata);
+	}
+	else
+	{
+		echo file_get_contents("data/index.json");
+	}
+
+	?>;
+	$("#trevor-text-id").val(trevordata);
+	new SirTrevor.Editor({ el: $('.js-st-instance') });
+	// $("#trevor-form").focusout(function() {
+	// 	$("#trevor-form").submit();
+	// });
 </script>
 
 </body>
