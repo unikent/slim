@@ -1,0 +1,6 @@
+{
+  "name": "your-project",
+  "dependencies": {
+    "sir-trevor-js": "0.3.0"
+  }
+}
