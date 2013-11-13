@@ -4,11 +4,13 @@
 	<title>slim editor</title>
 	<link href="bower_components/sir-trevor-js/sir-trevor.css" media="screen" rel="stylesheet" type="text/css" />
 	<link href="bower_components/sir-trevor-js/sir-trevor-icons.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="css/menu.css" rel="stylesheet">
+    <link href="css/editor.css" rel="stylesheet">
 </head>
 
 
 
-<body>
+<body class="g-body">
 
 
 
@@ -17,13 +19,12 @@
   <input type="submit" />
 </form>
 
-
-
 <script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
 <script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/jquery/jquery-migrate.min.js"></script>
 <script type="text/javascript" src="bower_components/Eventable/eventable.js"></script>
 <script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
+<script type="text/javascript" src="js/grande.js"></script>
 
 <script>
 	var trevordata = <?php
@@ -44,6 +45,10 @@
 	// $("#trevor-form").focusout(function() {
 	// 	$("#trevor-form").submit();
 	// });
+</script>
+
+<script type="text/javascript">
+  grande.bind(document.querySelectorAll("section"));
 </script>
 
 </body>
