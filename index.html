@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>slim editor</title>
-	<link href="bower_components/sir-trevor-js/sir-trevor.css" media="screen" rel="stylesheet" type="text/css" />
-	<link href="bower_components/sir-trevor-js/sir-trevor-icons.css" media="screen" rel="stylesheet" type="text/css" />
-</head>
+	<head>
+		<title>slim editor</title>
+		<link href="bower_components/sir-trevor-js/sir-trevor.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="bower_components/sir-trevor-js/sir-trevor-icons.css" media="screen" rel="stylesheet" type="text/css" />
 
+		<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+	</head>
 
+	<body class="container">
+		<header class="page-header">
+			<h1>Shiny Little Internet Maker</h1>
+		</header>
 
-<body>
+		<br />
 
+		<form action="POST" class="row">
+			<div class="col col-md-8">
+		 		<textarea name="col_one"></textarea>
+		 	</div>
 
+		 	<div class="col col-md-4">
+				<textarea name="col_two"></textarea>
+			</div>
+		</form>
 
-<form>
-  <textarea class="js-st-instance"></textarea>
-</form>
+		<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
+		<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/jquery/jquery-migrate.min.js"></script>
+		<script type="text/javascript" src="bower_components/Eventable/eventable.js"></script>
+		<script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
 
+		<script>
+		  var trev1 = new SirTrevor.Editor({ el: $("[name='col_one']") });
+		  var trev2 = new SirTrevor.Editor({ el: $("[name='col_two']") });
+		</script>
 
+		<style type="text/css">
+			.col {
+				min-height: 20em; 
+				border: 2px dashed gray; 
+			}
 
-<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
-<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="bower_components/jquery/jquery-migrate.min.js"></script>
-<script type="text/javascript" src="bower_components/Eventable/eventable.js"></script>
-<script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
-
-<script>
-  new SirTrevor.Editor({ el: $('.js-st-instance') });
-</script>
-
-</body>
+			.col + .col { border-left: none; }
+		</style>
+	</body>
 </html>
