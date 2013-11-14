@@ -30,6 +30,24 @@
 		<script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
 
 		<script>
+			/* Text Block */
+			SirTrevor.Blocks.MyText = SirTrevor.Block.extend({
+
+			  type: "my_text",
+
+			  title: function() { return i18n.t('blocks:text:title'); },
+
+			  editorHTML: '<div class="st-required st-text-block" contenteditable="true"></div>',
+
+			  icon_name: 'text',
+
+			  loadData: function(data){
+			    this.getTextBlock().html(SirTrevor.toHTML(data.text, this.type));
+			  }
+			});
+
+
+
 			var get_colset = function(template, vars){
 				switch(template){
 					case '1c:12:v0.1':
@@ -90,7 +108,7 @@
 
 				form.append(colset);	
 				$(colset).find('textarea').each(function(){
-					new SirTrevor.Editor({ el: $(this) });
+					new SirTrevor.Editor({ el: $(this), blockTypes: ['Image', 'MyText'] });
 				});
 			}
 
