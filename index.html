@@ -2,10 +2,27 @@
 <html>
 	<head>
 		<title>slim editor</title>
+
+
+		<link href="bower_components/grande/css/editor.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="bower_components/grande/css/menu.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="bower_components/sir-trevor-js/sir-trevor.css" media="screen" rel="stylesheet" type="text/css" />
 		<link href="bower_components/sir-trevor-js/sir-trevor-icons.css" media="screen" rel="stylesheet" type="text/css" />
 
 		<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+
+		<style>
+
+		.g-body {
+			min-height: 2em;
+			line-height: 1.45;
+			font-size: 1.275em;
+			outline: none;
+			border: none;
+		}
+
+
+		</style>
 	</head>
 
 	<body class="container">
@@ -28,8 +45,48 @@
 		<script type="text/javascript" src="bower_components/jquery/jquery-migrate.min.js"></script>
 		<script type="text/javascript" src="bower_components/Eventable/eventable.js"></script>
 		<script type="text/javascript" src="bower_components/sir-trevor-js/sir-trevor.min.js"></script>
-
+		<script type="text/javascript" src="bower_components/grande/dist/grande.min.js"></script>
 		<script>
+
+
+
+			SirTrevor.Blocks.Grande = SirTrevor.Block.extend({
+			  
+			    title: 'Grande',//function() { return i18n.t('blocks:text:title'); },
+			    className: "example",
+			  	type: "grande",
+
+			    editorHTML: function() {
+
+
+
+    				return '<article class="g-body" contenteditable="true"></article>';
+    			},
+    			onBlockRender: function() {
+
+    				var a = grande.bind(this.$editor)
+    				console.log(a);
+    			},
+
+			  
+			    icon_name: 'text',
+			  
+			    loadData: function(data){
+
+			   		this.getTextBlock().html(SirTrevor.toHTML(data.text, this.type));
+			    },
+			    beforeBlockRender: function() {console.log("before LOAD!");},
+
+			    toHTML: function(html) {
+				    return html;
+				},
+				toMarkdown: function(markdown) {
+			    	return markdown.replace(/^(.+)$/mg,"> $1");
+			  	},
+
+
+			});
+
 			var get_colset = function(template, vars){
 				switch(template){
 					case '1c:12:v0.1':
@@ -98,6 +155,10 @@
 			$('.add-colset').click(function(){
 				append_colset($(this).attr('data-colset'));
 			});
+
+
+			
+
 
 			// $(document).ready(function(){
 			// 	append_colset('2c:8-4:v0.1')
